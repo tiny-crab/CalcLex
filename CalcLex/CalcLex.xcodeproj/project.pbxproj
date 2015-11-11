@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		783FDF311BF3DB0C0000F91A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783FDF301BF3DB0C0000F91A /* main.cpp */; };
+		783FDF391BF3DCFD0000F91A /* lexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 783FDF371BF3DCFD0000F91A /* lexer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		783FDF2D1BF3DB0C0000F91A /* CalcLex */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CalcLex; sourceTree = BUILT_PRODUCTS_DIR; };
 		783FDF301BF3DB0C0000F91A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		783FDF371BF3DCFD0000F91A /* lexer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexer.cpp; sourceTree = "<group>"; };
+		783FDF3A1BF3DF0C0000F91A /* calcLex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = calcLex.h; path = ../calcLex.h; sourceTree = "<group>"; tabWidth = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +60,9 @@
 		783FDF2F1BF3DB0C0000F91A /* CalcLex */ = {
 			isa = PBXGroup;
 			children = (
+				783FDF3A1BF3DF0C0000F91A /* calcLex.h */,
 				783FDF301BF3DB0C0000F91A /* main.cpp */,
+				783FDF371BF3DCFD0000F91A /* lexer.cpp */,
 			);
 			path = CalcLex;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				783FDF391BF3DCFD0000F91A /* lexer.cpp in Sources */,
 				783FDF311BF3DB0C0000F91A /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
