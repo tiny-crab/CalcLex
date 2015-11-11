@@ -44,14 +44,62 @@ int calcLex()
         {
             return endOfFileSym; //using newline as end of file symbol, may need to change
         }
-        string hi = "hi";
         
         calcTextAppend(currentChar);
-        if(followingChars(hi))
+        if(followingChars(":="))
         {
             return assignSym;
         }
+        if(followingChars("read"))
+        {
+            return readSym;
+        }
+        if(followingChars("write"))
+        {
+            return writeSym;
+        }
+        if( (currentChar >= 'A' && currentChar <= 'Z') || (currentChar >= 'a' && currentChar <= 'z'))
+        {
+            //messy line, but gets new char and checks between capital letters and lowercase letters on the ascii table
+            while(((currentChar = filestream.get()) >= 'A' && currentChar <= 'Z') || (currentChar >= 'a' && currentChar <= 'z'))
+            {
+                calcTextAppend(currentChar);
+            }
+            
+            filestream.unget();
+            return identifier;
+        }
+        if(currentChar == '+' || currentChar == '-')
+        {
+            return addOp;
+        }
+        if(currentChar == '*' || currentChar == '/')
+        {
+            return multOp;
+        }
+        if(currentChar == '(')
+        {
+            return leftParen;
+        }
+        if(currentChar == ')')
+        {
+            return rightParen;
+        }
+        if(currentChar >= '0' && currentChar <= '9')
+        {
+            while( (currentChar = filestream.get()) >= '0' && currentChar <= '9')
+            {
+                calcTextAppend(currentChar);
+            }
+            
+            filestream.unget();
+            return numConst;
+        }
+        
+        return currentChar; //scanner doesn't know what this is, throw it away
     }
+    
+    return endOfFileSym; //this should never be returned from here
 }
 
 

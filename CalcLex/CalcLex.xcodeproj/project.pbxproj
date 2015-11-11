@@ -28,6 +28,7 @@
 		783FDF301BF3DB0C0000F91A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		783FDF371BF3DCFD0000F91A /* lexer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexer.cpp; sourceTree = "<group>"; };
 		783FDF3A1BF3DF0C0000F91A /* calcLex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = calcLex.h; path = ../calcLex.h; sourceTree = "<group>"; tabWidth = 4; };
+		783FDF3B1BF3F38D0000F91A /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 				783FDF3A1BF3DF0C0000F91A /* calcLex.h */,
 				783FDF301BF3DB0C0000F91A /* main.cpp */,
 				783FDF371BF3DCFD0000F91A /* lexer.cpp */,
+				783FDF3B1BF3F38D0000F91A /* test.txt */,
 			);
 			path = CalcLex;
 			sourceTree = "<group>";

@@ -8,14 +8,16 @@
 
 using namespace std;
 
-enum calcGrammarTokens { endOfFileSym = 0, assignSym, readSym, writeSym, identifier, addOp, multOp, leftParen, rightParen, numConst};
+enum calcGrammarTokens {
+    endOfFileSym = 0, assignSym, readSym, writeSym, identifier,
+    addOp, multOp, leftParen, rightParen, numConst};
 
 #define CALCTEXT_MAX 100
-extern char calcText[CALCTEXT_MAX]; // Global token text buffer
+extern char calcText[CALCTEXT_MAX];
 
 bool calcLexOpen(const char filename[]);
 void calcTextOpen();
-void calcTextAppend(int currentChar); //what does c mean?
+void calcTextAppend(int currentChar);
 int calcLex();
-int followingChars(string target, int returnSymbol);
+bool followingChars(string target);
 #endif /* calcLex_h */
