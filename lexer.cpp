@@ -48,11 +48,23 @@ int calcLex()
             return endOfFileSym;
         }
 
-        if( currentChar == '/' && ( currentChar = filestream.get() ) == '*')
+        char nextChar = filestream.get();
+        if( currentChar == '/' && nextChar == '*')
         {
-          
-
+            nextChar = filestream.get();
+            while(currentChar != '*' && nextChar != '/')
+            {
+              cout << "I'm inside a comment!";
+              currentChar = filestream.get();
+              nextChar = filestream.get();
+            }
+            if(currentChar == '*' && nextChar == '/')
+            {
+              currentChar = filestream.get();
+              currentChar = filestream.get();
+            }
         }
+        filestream.unget();
         if(followingChars(":=", currentChar))
         {
             return assignSym;
