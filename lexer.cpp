@@ -37,6 +37,7 @@ int calcLex()
     {
         calcTextClear();
         currentChar = filestream.get(); //get the next char!
+
         //used to ignore whitespace as a token
         while( currentChar == ' ' || currentChar == '\t' || currentChar == '\n')
         {
@@ -48,23 +49,15 @@ int calcLex()
             return endOfFileSym;
         }
 
-        char nextChar = filestream.get();
-        if( currentChar == '/' && nextChar == '*')
+        if(followingChars("/*", currentChar))
         {
-            nextChar = filestream.get();
-            while(currentChar != '*' && nextChar != '/')
-            {
-              cout << "I'm inside a comment!";
-              currentChar = filestream.get();
-              nextChar = filestream.get();
-            }
-            if(currentChar == '*' && nextChar == '/')
+            while(currentChar != '\n' && !followingChars("*/", currentChar))
             {
               currentChar = filestream.get();
-              currentChar = filestream.get();
             }
+            currentChar = filestream.get();
+            calcTextClear();
         }
-        filestream.unget();
         if(followingChars(":=", currentChar))
         {
             return assignSym;
@@ -144,5 +137,6 @@ bool followingChars(string target, char currentChar)
             return false;
         }
     }
+    filestream.unget();
     return true;
 }

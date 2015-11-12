@@ -10,11 +10,20 @@ int main(int argc, const char *argv[])
     }
 
     int token = calcLex();
-    while( token != endOfFileSym )
+    while( token <= 9 )
     {
         cout << "Token(" << token << "): " << calcText << endl;
         token = calcLex();
+        if(token == endOfFileSym)
+        {
+          break;
+        }
     }
+    if(token > 9)
+    {
+      cout << "Unidentified Token! Sorry, I can't continue compiling. I was passed a token with value: " << token << endl;
+    }
+
 
     return 0;
 }

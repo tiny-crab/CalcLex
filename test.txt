@@ -1,6 +1,7 @@
-zak := 42
-john := 43 + 74 * 27
-read john
-write zak
-mike := 44 + (34 * 11) / 23
-/* this is a comment **/
+/* t1.txt */
+read A /* Input the values */
+read B
+/*****Perform the computations*****/
+sum := A + B
+write sum
+write sum/2.0
