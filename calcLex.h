@@ -17,7 +17,8 @@ extern char calcText[CALCTEXT_MAX];
 
 bool calcLexOpen(const char filename[]);
 void calcTextOpen();
+void calcTextClear();
 void calcTextAppend(int currentChar);
 int calcLex();
-bool followingChars(string target);
+bool followingChars(string target, char currentChar);
 #endif /* calcLex_h */
