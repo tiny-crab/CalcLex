@@ -102,63 +102,32 @@ int calcLex()
             return identifier;
         }
 
-        //numeric constant must start with a digit, never with a decimal
-        //if the current char is a number, or float starting with a decimal...
-        if((currentChar >= '1' && currentChar <= '9') || currentChar == '.')
+        //if the current char is a number
+        if((currentChar >= '1' && currentChar <= '9'))
         {
-            cout << "I found a numeric constant" << endl;
-            //this makes sure it does not have more than one decimal, and it starts with a decimal
-            if(currentChar == '.')
-            {
-              cout << "It had a decimal at the front." << endl;
-              while( (currentChar = filestream.get()) >= '0' && currentChar <= '9')
-              {
-                  cout << "It had these numbers following the decimal:" << currentChar;
-                  calcTextAppend(currentChar);
-              }
-            }
-            //this makes sure that it can have any number of digits before a decimal, but only one decimal
-            else
-            {
-              cout << "It didn't start with a decimal." << endl;
-              //this can see an unlimited number of digits before a decimal...
-              while( ((currentChar = filestream.get()) >= '0' && currentChar <= '9') || currentChar == '.')
-              {
-                  cout << "It had these numbers before the decimal: " << currentChar;
-                  calcTextAppend(currentChar);
-                  //but once it finds a decimal...
-                  if(currentChar == '.')
-                  {
-                    cout << "I found a decimal here";
-                    //get the next char
-                    currentChar = filestream.get();
-                    //if it isn't a digit, throw an exception (10 works because of the way main.cpp handles proper tokens)
-                    if(!(currentChar >= '0' && currentChar <= '9'))
-                    {
-                      cout << "I got a number after the decimal";
-                      return currentChar;
-                    }
-                    //infinite loop to check for remaining numbers
-                    while(1)
-                    {
-                      currentChar = filestream.get();
-                      if(currentChar >= '0' && currentChar <= '9')
-                      {
-                        calcTextAppend(currentChar);
-                      }
-                      if(currentChar == ' ' || currentChar == '\t' || currentChar == '\n')
-                      {
-                        return numConst;
-                      }
-                      else
-                      {
-                        return currentChar;
-                      }
-                    }
-                  }
-              }
-            }
+			while ((currentChar = filestream.get()) >= '0' && currentChar <= '9')
+			{
+				if (currentChar == '.')
+				{
+					currentChar = filestream.get();
+					if (currentChar <= '0' && currentChar >= '9')
+					{
+						cout << "This number ends in a decimal :(" << endl;
+						return 10;
+					}
+					while (currentChar >= '0' && currentChar <= '9')
+					{
+						calcTextAppend(currentChar);
+						currentChar = filestream.get();
+					}
 
+					filestream.unget();
+					return numConst;
+
+				}
+				calcTextAppend(currentChar);
+				
+			}
             filestream.unget();
             return numConst;
         }
