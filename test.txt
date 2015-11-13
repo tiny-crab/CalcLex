@@ -1,8 +1,1 @@
-/* t1.txt */
-read A /* Input the values */
-read B
-/*****Perform the computations*****/
-sum := A + B
-write sum / 2.03
-write sum / 20
-zak := 42342908374.29831234123
+zak :/*comment*/=

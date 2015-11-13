@@ -12,7 +12,7 @@ int main(int argc, const char *argv[])
     int token = calcLex();
     while( token <= 9 )
     {
-        cout << "Token(" << token << "): " << calcText << endl;
+        cout << "Token(" << token << ", " << translation(token) << "): " << calcText << endl;
         token = calcLex();
         if(token == endOfFileSym)
         {
@@ -26,4 +26,21 @@ int main(int argc, const char *argv[])
 
 
     return 0;
+}
+
+string translation(int identifier)
+{
+  switch (identifier) {
+    case 0: return "End of File Symbol";
+    case 1: return "Assignment Symbol";
+    case 2: return "Read Symbol";
+    case 3: return "Write Symbol";
+    case 4: return "Identifier";
+    case 5: return "Add Operation";
+    case 6: return "Multiplication Operation";
+    case 7: return "Left Parenthesis";
+    case 8: return "Right Parenthesis";
+    case 9: return "Numeric Constant";
+    default: return "Unknown";
+  }
 }

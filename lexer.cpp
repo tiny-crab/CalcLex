@@ -64,7 +64,6 @@ int calcLex()
               currentChar = filestream.get();
             }
             //move to the next character after the comment or line has ended
-            currentChar = filestream.get();
             //hop back up to the top of the while loop
             continue;
         }
@@ -103,31 +102,28 @@ int calcLex()
         }
 
         //if the current char is a number
-        if((currentChar >= '1' && currentChar <= '9'))
+        if((currentChar >= '0' && currentChar <= '9'))
         {
-			while ((currentChar = filestream.get()) >= '0' && currentChar <= '9')
-			{
-				if (currentChar == '.')
-				{
-					currentChar = filestream.get();
-					if (currentChar <= '0' && currentChar >= '9')
-					{
-						cout << "This number ends in a decimal :(" << endl;
-						return 10;
-					}
-					while (currentChar >= '0' && currentChar <= '9')
-					{
-						calcTextAppend(currentChar);
-						currentChar = filestream.get();
-					}
-
-					filestream.unget();
-					return numConst;
-
-				}
-				calcTextAppend(currentChar);
-				
-			}
+            while ( ((currentChar = filestream.get()) >= '0' && currentChar <= '9') || currentChar == '.')
+			      {
+				        if (currentChar == '.')
+				        {
+                  calcTextAppend(currentChar);
+					        currentChar = filestream.get();
+					        if (currentChar < '0' || currentChar > '9')
+					        {
+						        return 10;
+					        }
+					        while (currentChar >= '0' && currentChar <= '9')
+					        {
+						        calcTextAppend(currentChar);
+						        currentChar = filestream.get();
+					        }
+                  filestream.unget();
+					        return numConst;
+                }
+                calcTextAppend(currentChar);
+            }
             filestream.unget();
             return numConst;
         }

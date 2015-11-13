@@ -21,4 +21,5 @@ void calcTextClear();
 void calcTextAppend(int currentChar);
 int calcLex();
 bool followingChars(string target, char currentChar);
+string translation(int identifier);
 #endif /* calcLex_h */
